@@ -26,7 +26,7 @@ def write_data_structure_to_file(file_path: str,
     :param data_structure: Data structure.
     :param use_numpy: bool - Indicate if NumPy
         package should be used to serialize
-        data structure (default; False).
+        data structure (default: False).
     :return: bool - True if data structure
         could be written and False otherwise.
     """
@@ -53,7 +53,7 @@ def read_data_structure_from_file(file_path: str, use_numpy: bool = False):
     :param file_path: str - Path to file.
     :param use_numpy: bool - Indicate if NumPy
         package should be used to deserialize
-        data structure (default; False).
+        data structure (default: False).
     :return: Retrieved data structure.
         Return None in case of an error.
     """

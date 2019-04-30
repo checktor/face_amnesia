@@ -160,7 +160,7 @@ class DataSet(BaseDataSet):
                 self._metadata = new_metadata
             else:
                 # Given data structure does not contain the correct
-                # number of metadata instances, so raise a ValueError,
+                # number of metadata instances, so raise a ValueError.
                 raise ValueError
         else:
             # Given data structure does not represent
