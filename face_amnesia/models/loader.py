@@ -79,7 +79,7 @@ def get_face_descriptor():
     coordinates of facial landmarks to
     128-dimensional vector making sure
     that data points of the same person
-    have a shorter pairwise distance.
+    have a short pairwise distance.
     :return: Face description model.
     """
     return dlib.face_recognition_model_v1(_get_model_bin_path(FACE_DESCRIPTION_MODEL))

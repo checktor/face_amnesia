@@ -40,7 +40,7 @@ def _deduplicate_by_sorting(data_set: DataSet, callable_comparator) -> DataSet:
     for entry in sorted_data:
         if last_entry is None or callable_comparator(entry, last_entry) != 0:
             # Current data point was never seen before,
-            # so append it to lists of unique data points.
+            # so append it to list of unique data points.
             new_data_points.append(entry[0])
             new_metadata.append(entry[1])
             last_entry = entry

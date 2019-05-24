@@ -5,9 +5,9 @@
 # Copyright: 2019 Christian Hecktor (christian.hecktor@arcor.de).
 # Licence: GNU General Public License v3.0.
 
+import cv2
 import os
 
-import cv2
 import dlib
 import numpy
 
@@ -39,7 +39,7 @@ class Creation:
             - shape_predictor: Classifier to detect positions
                 of facial features such as eyes or nose.
             - face_descriptor: Classifier to convert facial
-                features to a 128 dimensional vector.
+                features to a 128-dimensional vector.
         :param use_cnn: bool - Indicate
             if a CNN-based model should be used to find
             human faces. Use a HOG-based detection

@@ -203,7 +203,7 @@ def cluster(data_set: DataSet,
     :param distance_threshold: float - Maximum
         distance between two data points in
         order to consider them as candidates
-        for the same cluster. Defaults to to
+        for the same cluster. Defaults to
         value specified in settings module.
     :param use_lsh: bool - Indicate if LSH
         structure should be used to presort

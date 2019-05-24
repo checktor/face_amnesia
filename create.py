@@ -33,7 +33,7 @@ def create(media_path: str,
         be increased to find smaller faces.
     :param use_compression: bool - Indicate if
         data points of each input file
-        should be compressed via clustering,
+        should be compressed via clustering.
     :param use_cnn: bool - Indicate if CNN-based
         face detection model should be used.
     :param use_overwrite: bool - Indicate if already

@@ -249,7 +249,7 @@ class Linear(Base):
         # store data points in-memory.
         self.data_point_storage = None
 
-        # Read parameter file (if necessary):
+        # Read parameter file (if necessary).
         if not self.in_memory:
             res = self.read_parameters_from_file()
             if not res:
@@ -486,7 +486,7 @@ class Lsh(Base):
 
     def __init__(self,
                  storage_path: str = "",
-                 use_pca: bool = True,
+                 use_pca: bool = False,
                  num_hash_functions: int = 0,
                  num_hash_tables: int = 0,
                  bucket_width: float = 0):
@@ -505,16 +505,16 @@ class Lsh(Base):
             of concatenated hash functions per
             hash table (corresponds to parameter
             k in corresponding LSH literature).
-            Defaults to to value specified in
+            Defaults to value specified in
             settings module.
         :param num_hash_tables: int - Number of
             independent hash tables (corresponds
             to parameter L in corresponding LSH
-            literature). Defaults to to value
+            literature). Defaults to value
             specified in settings module.
         :param bucket_width: float - Width of
             line section defining a single
-            LSH value. Defaults to to value
+            LSH value. Defaults to value
             specified in settings module.
         """
         # Call to base constructor.
