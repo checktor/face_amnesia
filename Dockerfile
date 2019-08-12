@@ -52,33 +52,33 @@ RUN mkdir /home/lib
 
 # Get OpenCV.
 RUN cd /home/lib/ && \
-    wget https://github.com/opencv/opencv/archive/4.1.0.zip && \
-	unzip 4.1.0.zip && \
-	rm 4.1.0.zip
+    wget https://github.com/opencv/opencv/archive/4.1.1.zip && \
+	unzip 4.1.1.zip && \
+	rm 4.1.1.zip
 
 # Get OpenCV contrib modules (necessary to use GPU support).
 # RUN cd /home/lib && \
-# 	wget https://github.com/opencv/opencv_contrib/archive/4.1.0.zip && \
-#	unzip 4.1.0.zip && \
-#	rm 4.1.0.zip
+# 	wget https://github.com/opencv/opencv_contrib/archive/4.1.1.zip && \
+#	unzip 4.1.1.zip && \
+#	rm 4.1.1.zip
 
 
 # Build OpenCV.
-RUN cd /home/lib/opencv-4.1.0/ && \
+RUN cd /home/lib/opencv-4.1.1/ && \
 	mkdir build && \
 	cd build/ && \
 	cmake -DCMAKE_BUILD_TYPE=RELEASE \
 		-DCMAKE_INSTALL_PREFIX=/usr/local \
 		-DENABLE_PRECOMPILED_HEADERS=OFF ..
 		# Add the following flags in order to enable GPU support.
-        # -DWITH_CUDA=ON \
-        # -DENABLE_FAST_MATH=1 \
-        # -DCUDA_FAST_MATH=1 \
-       	# -DWITH_CUBLAS=1 \
+        	# -DWITH_CUDA=ON \
+        	# -DENABLE_FAST_MATH=1 \
+        	# -DCUDA_FAST_MATH=1 \
+       		# -DWITH_CUBLAS=1 \
 		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.0.1/modules
 
 # Compile OpenCV.
-RUN cd /home/lib/opencv-4.1.0/build/ && \
+RUN cd /home/lib/opencv-4.1.1/build/ && \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
 	make -j 8 && \

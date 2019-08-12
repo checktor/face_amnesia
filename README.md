@@ -4,7 +4,7 @@ Face detection and retrieval in image and video files.
 ## Requirements
 
 ### Language
-* Python 3.5 (and later)
+* Python (>= 3.5)
 
 ### Dependencies
 * NumPy (http://www.numpy.org/)
@@ -76,7 +76,7 @@ source, however, may need some adjustments. The official guides on this
 topic are useful and can be found on the web:
 
 * http://dlib.net/compile.html
-* https://docs.opencv.org/4.1.0/d7/d9f/tutorial_linux_install.html
+* https://docs.opencv.org/4.1.1/d7/d9f/tutorial_linux_install.html
 
 The following paragraphs will provide additional information on
 compilation problems which may occur on some architectures.
