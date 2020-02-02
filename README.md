@@ -22,7 +22,7 @@ Face detection and retrieval in image and video files.
 Run provided [install script](install.sh) to use pre-compiled versions
 of OpenCV and dlib (without GPU support) available via pip.
 
-    ./test.sh
+    ./install.sh
 
 Note that corresponding pre-built OpenCV package is unofficial but works
 fine. See comments in install script for further details.
