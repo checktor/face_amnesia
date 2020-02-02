@@ -20,15 +20,23 @@ Face detection and retrieval in image and video files.
 
 ### Use pre-compiled libraries
 Run provided [install script](install.sh) to use pre-compiled versions
-of OpenCV and dlib (without GPU support) available via pip. Note that
-corresponding pre-built OpenCV package is unofficial but works fine.
-See comments in install script for further details.
+of OpenCV and dlib (without GPU support) available via pip.
+
+    ./test.sh
+
+Note that corresponding pre-built OpenCV package is unofficial but works
+fine. See comments in install script for further details.
 
 ### Use Dockerfile
 Run provided [Dockerfile](Dockerfile) to compile OpenCV and dlib by hand
-using the official Ubuntu 18.04. image. Note that it is possible to enable
-hardware-dependent optimization such as AVX instructions or CUDA support.
-See comments in Dockerfile for further details.
+using the official Ubuntu 18.04. image.
+
+    docker build .
+    docker run -it <image-id>
+
+Note that it is possible to enable hardware-dependent optimization such
+as AVX instructions or CUDA support. See comments in Dockerfile for
+further details.
 
 ## Testing
 Run provided [test script](test.sh) to execute unit and integration tests.
@@ -76,7 +84,7 @@ source, however, may need some adjustments. The official guides on this
 topic are useful and can be found on the web:
 
 * http://dlib.net/compile.html
-* https://docs.opencv.org/4.1.1/d7/d9f/tutorial_linux_install.html
+* https://docs.opencv.org/4.2.0/d7/d9f/tutorial_linux_install.html
 
 The following paragraphs will provide additional information on
 compilation problems which may occur on some architectures.

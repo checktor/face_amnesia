@@ -1,9 +1,9 @@
 # Dockerfile using image of Ubuntu 18.04.
 # and compiling OpenCV and dlib by hand.
 #
-# Tested with Docker 18.06.1.
+# Tested with Docker 18.09.9.
 #
-# Copyright: 2019 Christian Hecktor (christian.hecktor@arcor.de).
+# Copyright: 2020 Christian Hecktor (christian.hecktor@arcor.de).
 # Licence: GNU General Public License v3.0.
 
 # Use image of Ubuntu 18.04.
@@ -11,7 +11,7 @@ FROM ubuntu:18.04
 
 # Use image of Ubuntu 18.04 with CUDA
 # and cuDNN in order to use GPU support.
-# FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
+# FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
 # Update.
 RUN apt-get -y update && \
@@ -52,19 +52,19 @@ RUN mkdir /home/lib
 
 # Get OpenCV.
 RUN cd /home/lib/ && \
-    wget https://github.com/opencv/opencv/archive/4.1.1.zip && \
-	unzip 4.1.1.zip && \
-	rm 4.1.1.zip
+    wget https://github.com/opencv/opencv/archive/4.2.0.zip && \
+	unzip 4.2.0.zip && \
+	rm 4.2.0.zip
 
 # Get OpenCV contrib modules (necessary to use GPU support).
 # RUN cd /home/lib && \
-# 	wget https://github.com/opencv/opencv_contrib/archive/4.1.1.zip && \
-#	unzip 4.1.1.zip && \
-#	rm 4.1.1.zip
+# 	wget https://github.com/opencv/opencv_contrib/archive/4.2.0.zip && \
+#	unzip 4.2.0.zip && \
+#	rm 4.2.0.zip
 
 
 # Build OpenCV.
-RUN cd /home/lib/opencv-4.1.1/ && \
+RUN cd /home/lib/opencv-4.2.0/ && \
 	mkdir build && \
 	cd build/ && \
 	cmake -DCMAKE_BUILD_TYPE=RELEASE \
@@ -78,10 +78,10 @@ RUN cd /home/lib/opencv-4.1.1/ && \
 		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.0.1/modules
 
 # Compile OpenCV.
-RUN cd /home/lib/opencv-4.1.1/build/ && \
+RUN cd /home/lib/opencv-4.2.0/build/ && \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
-	make -j 8 && \
+	make -j 2 && \
 	make install && \
 	ldconfig
 
@@ -90,12 +90,12 @@ RUN cd /home/lib/opencv-4.1.1/build/ && \
 
 # Get dlib.
 RUN cd /home/lib/ && \
-	wget http://dlib.net/files/dlib-19.17.tar.bz2 && \
-	tar -xjf dlib-19.17.tar.bz2 && \
-	rm dlib-19.17.tar.bz2
+	wget http://dlib.net/files/dlib-19.19.tar.bz2 && \
+	tar -xjf dlib-19.19.tar.bz2 && \
+	rm dlib-19.19.tar.bz2
 
 # Build and compile dlib.
-RUN cd /home/lib/dlib-19.17/ && \
+RUN cd /home/lib/dlib-19.19/ && \
 	mkdir build && \
 	cd build/ && \
 	# In the following command, add "-DUSE_SSE2_INSTRUCTIONS=1",
