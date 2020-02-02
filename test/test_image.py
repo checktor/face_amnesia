@@ -2,7 +2,7 @@
 #
 # Unit test for image module.
 #
-# Copyright: 2019 Christian Hecktor (christian.hecktor@arcor.de).
+# Copyright: 2020 Christian Hecktor (christian.hecktor@arcor.de).
 # Licence: GNU General Public License v3.0.
 
 import os

@@ -2,7 +2,7 @@
 #
 # Module to manage parallel tasks.
 #
-# Copyright: 2019 Christian Hecktor (christian.hecktor@arcor.de).
+# Copyright: 2020 Christian Hecktor (christian.hecktor@arcor.de).
 # Licence: GNU General Public License v3.0.
 
 from multiprocessing import cpu_count
