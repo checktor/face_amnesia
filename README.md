@@ -20,17 +20,15 @@ Face detection and retrieval in image and video files.
 
 ### Use pre-compiled libraries
 Run provided [install script](install.sh) to use pre-compiled versions
-of OpenCV and dlib (without GPU support) available via pip.
-
-    ./install.sh
-
-Note that corresponding pre-built OpenCV package is unofficial but works
+of OpenCV and dlib (without GPU support) available via pip. Note that
+corresponding pre-built OpenCV package is unofficial but works
 fine. See comments in install script for further details.
 
 ### Use Dockerfile
 Run provided [Dockerfile](Dockerfile) to compile OpenCV and dlib by hand
 using the official Ubuntu 18.04. image.
-
+    
+    cd /path/to/face_amnesia/
     docker build .
     docker run -it <image-id>
 
@@ -43,13 +41,10 @@ Run provided [test script](test.sh) to execute unit and integration tests.
 
 ## Usage
 Command-line interfaces for data point creation and retrieval available
-in project's root directory.
-
-    cd /path/to/face_amnesia/
-
-Data points and corresponding source files are stored in and served from
-a separate `face amnesia` folder in current user's home directory which
-may be identical to project's root directory.
+in project's root directory. Data points and corresponding source
+files are stored in and served from a separate `face amnesia` folder
+in current user's home directory which may be identical to project's
+root directory.
 
 ### Data point creation
 Create face description vectors from media file (image, video) or whole
