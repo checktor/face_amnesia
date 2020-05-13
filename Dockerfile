@@ -13,36 +13,45 @@ FROM ubuntu:18.04
 # and cuDNN in order to use GPU support.
 # FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
-# Update.
-RUN apt-get -y update && \
-	apt-get -y upgrade && \
-	apt-get -y autoremove
-
-# Install prerequisites.
-RUN apt-get -y install build-essential cmake
-RUN apt-get -y install wget unzip
-RUN apt-get -y install pkg-config
+# Install required packages.
+RUN apt-get update && \
+	apt-get -y install \
+		# Prerequisites.
+		build-essential \
+		cmake \
+		wget \
+		unzip \
+		pkg-config \
+		# Python.
+		python3 \
+		python3-dev \
+		python3-pip \
+		# Image processing libraries.
+		libjpeg-dev \
+		libpng-dev \
+		libtiff-dev \
+		# Video processing and streaming libraries.
+		libxvidcore-dev \
+		libx264-dev \
+		libavcodec-dev \
+		libavformat-dev \
+		libswscale-dev \
+		libgstreamer-plugins-base1.0-dev \
+		# GUI support (if necessary).
+		# libgtk-3-dev \
+		# Optimizations.
+		libopenblas-dev \
+		liblapacke-dev \
+		libatlas-base-dev \
+		gfortran \
+		libtbb2 \
+		libtbb-dev && \
+	# Cleanup.
+	apt-get clean && \
+	rm -r /var/lib/apt/lists/*
 
 # Install Python packages.
-RUN apt-get -y install python3 python3-dev
-RUN apt-get -y install python3-pip
-RUN pip3 install setuptools
-RUN pip3 install numpy
-RUN pip3 install scikit-learn
-
-# Install image processing libraries.
-RUN apt-get -y install libjpeg-dev libpng-dev libtiff-dev
-
-# Install video processing and streaming libraries.
-RUN apt-get -y install libxvidcore-dev libx264-dev
-RUN apt-get -y install libavcodec-dev libavformat-dev libswscale-dev
-RUN apt-get -y install libgstreamer-plugins-base1.0-dev
-
-# Install GUI support (if necessary).
-# RUN apt-get -y install libgtk-3-dev
-
-# Install optimizations.
-RUN apt-get -y install libopenblas-dev liblapacke-dev libatlas-base-dev gfortran libtbb2 libtbb-dev
+RUN pip3 install --no-cache-dir setuptools numpy scikit-learn
 
 # Create folder to store external libraries.
 RUN mkdir /home/lib
@@ -52,33 +61,32 @@ RUN mkdir /home/lib
 
 # Get OpenCV.
 RUN cd /home/lib/ && \
-    wget https://github.com/opencv/opencv/archive/4.2.0.zip && \
-	unzip 4.2.0.zip && \
-	rm 4.2.0.zip
+    wget https://github.com/opencv/opencv/archive/4.3.0.zip && \
+	unzip 4.3.0.zip && \
+	rm 4.3.0.zip
 
 # Get OpenCV contrib modules (necessary to use GPU support).
 # RUN cd /home/lib && \
-# 	wget https://github.com/opencv/opencv_contrib/archive/4.2.0.zip && \
-#	unzip 4.2.0.zip && \
-#	rm 4.2.0.zip
-
+# 	wget https://github.com/opencv/opencv_contrib/archive/4.3.0.zip && \
+#	unzip 4.3.0.zip && \
+#	rm 4.3.0.zip
 
 # Build OpenCV.
-RUN cd /home/lib/opencv-4.2.0/ && \
+RUN cd /home/lib/opencv-4.3.0/ && \
 	mkdir build && \
 	cd build/ && \
 	cmake -DCMAKE_BUILD_TYPE=RELEASE \
 		-DCMAKE_INSTALL_PREFIX=/usr/local \
 		-DENABLE_PRECOMPILED_HEADERS=OFF ..
 		# Add the following flags in order to enable GPU support.
-        	# -DWITH_CUDA=ON \
-        	# -DENABLE_FAST_MATH=1 \
-        	# -DCUDA_FAST_MATH=1 \
-       		# -DWITH_CUBLAS=1 \
+        # -DWITH_CUDA=ON \
+        # -DENABLE_FAST_MATH=1 \
+        # -DCUDA_FAST_MATH=1 \
+       	# -DWITH_CUBLAS=1 \
 		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.0.1/modules
 
 # Compile OpenCV.
-RUN cd /home/lib/opencv-4.2.0/build/ && \
+RUN cd /home/lib/opencv-4.3.0/build/ && \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
 	make -j 2 && \

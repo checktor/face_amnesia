@@ -31,8 +31,8 @@ fine. See comments in install script for further details.
 Run provided [Dockerfile](Dockerfile) to compile OpenCV and dlib by hand
 using the official Ubuntu 18.04. image.
 
-    docker build .
-    docker run -it <image-id>
+    docker build -t face_amnesia .
+    docker run -it face_amnesia
 
 Note that it is possible to enable hardware-dependent optimization such
 as AVX instructions or CUDA support. See comments in Dockerfile for
