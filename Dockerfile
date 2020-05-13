@@ -3,7 +3,7 @@
 #
 # Tested with Docker 18.09.9.
 #
-# Copyright: 2020 Christian Hecktor (christian.hecktor@arcor.de).
+# Copyright: 2020 Christian Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
 # Use image of Ubuntu 18.04.

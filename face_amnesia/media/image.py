@@ -11,7 +11,7 @@
 # ignoring the alpha channel). This can be seen as a
 # 3D matrix whose third dimension contains 3 values.
 #
-# Copyright: 2020 Christian Hecktor (christian.hecktor@arcor.de).
+# Copyright: 2020 Christian Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
 import imghdr

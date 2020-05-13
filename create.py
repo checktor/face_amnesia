@@ -4,7 +4,7 @@
 # Command-line interface to
 # create face description vectors.
 #
-# Copyright: 2020 Christian Hecktor (christian.hecktor@arcor.de).
+# Copyright: 2020 Christian Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
 import argparse
