@@ -89,8 +89,7 @@ RUN cd /home/lib/opencv-4.3.0/ && \
 RUN cd /home/lib/opencv-4.3.0/build/ && \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
-	cores=$(nproc) \
-	make -j ${cores} && \
+	make -j $(nproc) && \
 	make install && \
 	ldconfig
 
