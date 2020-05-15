@@ -59,20 +59,23 @@ RUN mkdir /home/lib
 # Install OpenCV.
 # ===============
 
+# Specify OpenCV version.
+ENV OPENCV_VERSION=4.3.0
+
 # Get OpenCV.
 RUN cd /home/lib/ && \
-    wget https://github.com/opencv/opencv/archive/4.3.0.zip && \
-	unzip 4.3.0.zip && \
-	rm 4.3.0.zip
+    wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip && \
+	unzip ${OPENCV_VERSION}.zip && \
+	rm ${OPENCV_VERSION}.zip
 
 # Get OpenCV contrib modules (necessary to use GPU support).
 # RUN cd /home/lib && \
-# 	wget https://github.com/opencv/opencv_contrib/archive/4.3.0.zip && \
-#	unzip 4.3.0.zip && \
-#	rm 4.3.0.zip
+# 	wget https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip && \
+#	unzip ${OPENCV_VERSION}.zip && \
+#	rm ${OPENCV_VERSION}.zip
 
 # Build OpenCV.
-RUN cd /home/lib/opencv-4.3.0/ && \
+RUN cd /home/lib/opencv-${OPENCV_VERSION}/ && \
 	mkdir build && \
 	cd build/ && \
 	cmake -DCMAKE_BUILD_TYPE=RELEASE \
@@ -83,10 +86,10 @@ RUN cd /home/lib/opencv-4.3.0/ && \
         # -DENABLE_FAST_MATH=1 \
         # -DCUDA_FAST_MATH=1 \
        	# -DWITH_CUBLAS=1 \
-		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.3.0/modules
+		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${OPENCV_VERSION}/modules
 
 # Compile OpenCV.
-RUN cd /home/lib/opencv-4.3.0/build/ && \
+RUN cd /home/lib/opencv-${OPENCV_VERSION}/build/ && \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
 	make -j $(nproc) && \
@@ -96,14 +99,17 @@ RUN cd /home/lib/opencv-4.3.0/build/ && \
 # Install dlib.
 # =============
 
+# Specify dlib version.
+ENV DLIB_VERSION=19.19
+
 # Get dlib.
 RUN cd /home/lib/ && \
-	wget http://dlib.net/files/dlib-19.19.tar.bz2 && \
-	tar -xjf dlib-19.19.tar.bz2 && \
-	rm dlib-19.19.tar.bz2
+	wget http://dlib.net/files/dlib-${DLIB_VERSION}.tar.bz2 && \
+	tar -xjf dlib-${DLIB_VERSION}.tar.bz2 && \
+	rm dlib-${DLIB_VERSION}.tar.bz2
 
 # Build and compile dlib.
-RUN cd /home/lib/dlib-19.19/ && \
+RUN cd /home/lib/dlib-${DLIB_VERSION}/ && \
 	mkdir build && \
 	cd build/ && \
 	# In the following command, add "-DUSE_SSE2_INSTRUCTIONS=1",
