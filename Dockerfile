@@ -13,7 +13,7 @@ FROM ubuntu:18.04
 # and cuDNN in order to use GPU support.
 # FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
-# Install required packages.
+# Install Ubuntu packages.
 RUN apt-get update && \
 	apt-get -y install \
 		# Prerequisites.
@@ -83,13 +83,14 @@ RUN cd /home/lib/opencv-4.3.0/ && \
         # -DENABLE_FAST_MATH=1 \
         # -DCUDA_FAST_MATH=1 \
        	# -DWITH_CUBLAS=1 \
-		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.0.1/modules
+		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-4.3.0/modules
 
 # Compile OpenCV.
 RUN cd /home/lib/opencv-4.3.0/build/ && \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
-	make -j 2 && \
+	cores=$(nproc) \
+	make -j ${cores} && \
 	make install && \
 	ldconfig
 
