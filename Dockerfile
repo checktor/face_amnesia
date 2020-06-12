@@ -14,8 +14,8 @@ FROM ubuntu:18.04
 # FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
 # Install Ubuntu packages.
-RUN apt-get update && \
-	apt-get -y install \
+RUN apt-get update \
+	&& apt-get -y install \
 		# Prerequisites.
 		build-essential \
 		cmake \
@@ -45,13 +45,16 @@ RUN apt-get update && \
 		libatlas-base-dev \
 		gfortran \
 		libtbb2 \
-		libtbb-dev && \
+		libtbb-dev \
 	# Cleanup.
-	apt-get clean && \
-	rm -r /var/lib/apt/lists/*
+	&& apt-get clean \
+	&& rm -r /var/lib/apt/lists/*
 
 # Install Python packages.
-RUN pip3 install --no-cache-dir setuptools numpy scikit-learn
+RUN pip3 install --no-cache-dir \
+	setuptools \
+	numpy \
+	scikit-learn
 
 # Create folder to store external libraries.
 RUN mkdir /home/lib
@@ -63,22 +66,23 @@ RUN mkdir /home/lib
 ENV OPENCV_VERSION=4.3.0
 
 # Get OpenCV.
-RUN cd /home/lib/ && \
-    wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip && \
-	unzip ${OPENCV_VERSION}.zip && \
-	rm ${OPENCV_VERSION}.zip
-
+RUN cd /home/lib \
+    && wget https://github.com/opencv/opencv/archive/${OPENCV_VERSION}.zip \
+	&& unzip ${OPENCV_VERSION}.zip \
+	&& rm ${OPENCV_VERSION}.zip
+	
 # Get OpenCV contrib modules (necessary to use GPU support).
-# RUN cd /home/lib && \
-# 	wget https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip && \
-#	unzip ${OPENCV_VERSION}.zip && \
-#	rm ${OPENCV_VERSION}.zip
+# RUN cd /home/lib \
+# 	&& wget https://github.com/opencv/opencv_contrib/archive/${OPENCV_VERSION}.zip \
+#	&& unzip ${OPENCV_VERSION}.zip \
+#	&& rm ${OPENCV_VERSION}.zip
 
 # Build OpenCV.
-RUN cd /home/lib/opencv-${OPENCV_VERSION}/ && \
-	mkdir build && \
-	cd build/ && \
-	cmake -DCMAKE_BUILD_TYPE=RELEASE \
+RUN cd /home/lib/opencv-${OPENCV_VERSION} \
+	&& mkdir build \
+	&& cd build \
+	&& cmake \
+		-DCMAKE_BUILD_TYPE=RELEASE \
 		-DCMAKE_INSTALL_PREFIX=/usr/local \
 		-DENABLE_PRECOMPILED_HEADERS=OFF ..
 		# Add the following flags in order to enable GPU support.
@@ -89,12 +93,12 @@ RUN cd /home/lib/opencv-${OPENCV_VERSION}/ && \
 		# -DOPENCV_EXTRA_MODULES_PATH=../../opencv_contrib-${OPENCV_VERSION}/modules
 
 # Compile OpenCV.
-RUN cd /home/lib/opencv-${OPENCV_VERSION}/build/ && \
+RUN cd /home/lib/opencv-${OPENCV_VERSION}/build \
 	# Adjust -j flag according to the
 	# number of CPU cores available.
-	make -j $(nproc) && \
-	make install && \
-	ldconfig
+	&& make -j $(nproc) \
+	&& make install \
+	&& ldconfig
 
 # Install dlib.
 # =============
@@ -103,28 +107,28 @@ RUN cd /home/lib/opencv-${OPENCV_VERSION}/build/ && \
 ENV DLIB_VERSION=19.19
 
 # Get dlib.
-RUN cd /home/lib/ && \
-	wget http://dlib.net/files/dlib-${DLIB_VERSION}.tar.bz2 && \
-	tar -xjf dlib-${DLIB_VERSION}.tar.bz2 && \
-	rm dlib-${DLIB_VERSION}.tar.bz2
+RUN cd /home/lib \
+	&& wget http://dlib.net/files/dlib-${DLIB_VERSION}.tar.bz2 \
+	&& tar -xjf dlib-${DLIB_VERSION}.tar.bz2 \
+	&& rm dlib-${DLIB_VERSION}.tar.bz2
 
 # Build and compile dlib.
-RUN cd /home/lib/dlib-${DLIB_VERSION}/ && \
-	mkdir build && \
-	cd build/ && \
+RUN cd /home/lib/dlib-${DLIB_VERSION} \
+	&& mkdir build \
+	&& cd build \
 	# In the following command, add "-DUSE_SSE2_INSTRUCTIONS=1",
 	# "-DUSE_SSE4_INSTRUCTIONS=1" or "-DUSE_AVX_INSTRUCTIONS=1"
 	# in case your CPU supports SSE2, SSE4 or AVX instructions
 	# and "-DDLIB_USE_CUDA=1" if GPU support should be enabled.
-	cmake .. && \
-	cmake --build . --config Release && \
-	cd .. && \
+	&& cmake .. \
+	&& cmake --build . --config Release \
+	&& cd .. \
 	# Analogous to above, append "--yes USE_SSE2_INSTRUCTIONS",
 	# "--yes USE_SSE4_INSTRUCTIONS" or "--yes USE_AVX_INSTRUCTIONS"
 	# to use SSE2, SSE4 or AVX instructions and "--yes DLIB_USE_CUDA"
 	# to enable GPU support. However, on some systems these
 	# options are on by default and need not to be provided.
-	python3 setup.py install
+	&& python3 setup.py install
 
 # Add source data.
 ADD . /home/face_amnesia
