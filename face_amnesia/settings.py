@@ -2,7 +2,7 @@
 #
 # Global settings.
 #
-# Copyright: 2020 Christian Hecktor (checktor@posteo.de).
+# Copyright: 2020 C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
 import logging

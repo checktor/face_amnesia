@@ -3,5 +3,5 @@
 # Package containing basic functions to handle
 # description vectors and corresponding metadata.
 #
-# Copyright: 2020 Christian Hecktor (checktor@posteo.de).
+# Copyright: 2020 C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
