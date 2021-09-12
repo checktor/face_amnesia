@@ -18,5 +18,7 @@ jobs:
         run: docker run face-amnesia ./home/face_amnesia/test.sh
       - name: Login to GitHub registry
         run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
+        env:
+          GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Push to GitHub registry
         run: docker push face-amnesia
