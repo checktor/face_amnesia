@@ -2,7 +2,7 @@
 #
 # Video processing module.
 #
-# Copyright: 2020 C. Hecktor (checktor@posteo.de).
+# Copyright: C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
 import shlex

@@ -2,7 +2,7 @@
 #
 # Unit test for DataSet class.
 #
-# Copyright: 2020 C. Hecktor (checktor@posteo.de).
+# Copyright: C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
 import copy
