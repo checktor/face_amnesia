@@ -1,8 +1,6 @@
 # Dockerfile using image of Ubuntu 18.04.
 # and compiling OpenCV and dlib by hand.
 #
-# Tested with Docker 18.09.9.
-#
 # Copyright: C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
@@ -63,7 +61,7 @@ RUN mkdir /home/lib
 # ===============
 
 # Specify OpenCV version.
-ENV OPENCV_VERSION=4.3.0
+ENV OPENCV_VERSION=4.5.3
 
 # Get OpenCV.
 RUN cd /home/lib \
@@ -104,7 +102,7 @@ RUN cd /home/lib/opencv-${OPENCV_VERSION}/build \
 # =============
 
 # Specify dlib version.
-ENV DLIB_VERSION=19.19
+ENV DLIB_VERSION=19.22
 
 # Get dlib.
 RUN cd /home/lib \
