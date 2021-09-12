@@ -3,8 +3,6 @@
 # Script to install pre-compiled versions
 # of OpenCV and dlib (without GPU support).
 #
-# Tested with Ubuntu 18.04.
-#
 # Copyright: C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 

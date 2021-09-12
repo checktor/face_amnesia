@@ -13,7 +13,7 @@ jobs:
       - name: Build Docker image
         run: docker build -t docker.pkg.github.com/checktor/face_amnesia/face-amnesia:latest .
       - name: Test Docker image
-        run: docker run docker.pkg.github.com/checktor/face_amnesia/face-amnesia:latest ./home/face_amnesia/test.sh
+        run: docker run docker.pkg.github.com/checktor/face_amnesia/face-amnesia:latest /bin/bash -c "cd /home/face_amnesia && ./test.sh"
       - name: Login to GitHub registry
         run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
         env:
