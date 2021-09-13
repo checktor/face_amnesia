@@ -11,12 +11,12 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build Docker image
-        run: docker build -t docker.pkg.github.com/checktor/face_amnesia/face-amnesia:latest .
+        run: docker build -t ghcr.io/checktor/face_amnesia/face-amnesia:latest .
       - name: Test Docker image
-        run: docker run docker.pkg.github.com/checktor/face_amnesia/face-amnesia:latest /bin/bash -c "cd /home/face_amnesia && ./test.sh"
+        run: docker run ghcr.io/checktor/face_amnesia/face-amnesia:latest /bin/bash -c "cd /home/face_amnesia && ./test.sh"
       - name: Login to GitHub registry
-        run: docker login docker.pkg.github.com -u $GITHUB_ACTOR -p $GITHUB_TOKEN
+        run: docker login ghcr.io -u $GITHUB_ACTOR -p $GITHUB_TOKEN
         env:
           GITHUB_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: Push to GitHub registry
-        run: docker push docker.pkg.github.com/checktor/face_amnesia/face-amnesia:latest
+        run: docker push ghcr.io/checktor/face_amnesia/face-amnesia:latest
