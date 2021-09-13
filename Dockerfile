@@ -106,9 +106,9 @@ ENV DLIB_VERSION=19.22
 
 # Get dlib.
 RUN cd /home/lib \
-	&& wget http://dlib.net/files/dlib-${DLIB_VERSION}.tar.bz2 \
-	&& tar -xjf dlib-${DLIB_VERSION}.tar.bz2 \
-	&& rm dlib-${DLIB_VERSION}.tar.bz2
+	&& wget https://github.com/davisking/dlib/archive/refs/tags/v${DLIB_VERSION}.tar.gz \
+	&& tar -xf v${DLIB_VERSION}.tar.gz \
+	&& rm v${DLIB_VERSION}.tar.gz
 
 # Build and compile dlib.
 RUN cd /home/lib/dlib-${DLIB_VERSION} \
