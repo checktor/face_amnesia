@@ -5,15 +5,23 @@ on:
     branches: [ master ]
     
 jobs:
-  integrate:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Build Docker image
         run: docker build -t ghcr.io/checktor/face_amnesia/face-amnesia:latest .
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
       - name: Test Docker image
         run: docker run ghcr.io/checktor/face_amnesia/face-amnesia:latest /bin/bash -c "cd /home/face_amnesia && ./test.sh"
+  release:
+    runs-on: ubuntu-latest
+    needs: test
+    steps:
       - name: Login to GitHub registry
         run: docker login ghcr.io -u $GITHUB_ACTOR -p $GITHUB_TOKEN
         env:
