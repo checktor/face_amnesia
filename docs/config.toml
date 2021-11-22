@@ -1,0 +1,7 @@
+baseURL = 'https://checktor.github.io/face_amnesia/'
+languageCode = 'de-de'
+title = 'face_amnesia'
+theme = 'beautifulhugo'
+
+[Params]
+subtitle = 'Face detection and retrieval in image and video files'

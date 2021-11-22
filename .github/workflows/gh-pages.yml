@@ -1,0 +1,27 @@
+name: GitHub pages
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v2
+      with:
+        submodules: true
+    - name: Setup hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        extended: true
+    - name: Build
+      run: cd docs && hugo --minify
+    - name: Deploy
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./docs/public
