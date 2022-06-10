@@ -1,11 +1,11 @@
-# Dockerfile using image of Ubuntu 18.04.
+# Dockerfile using image of Ubuntu 20.04.
 # and compiling OpenCV and dlib by hand.
 #
 # Copyright: C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
-# Use image of Ubuntu 18.04.
-FROM ubuntu:18.04
+# Use image of Ubuntu 20.04.
+FROM ubuntu:20.04
 
 # Use image of Ubuntu 18.04 with CUDA
 # and cuDNN in order to use GPU support.
