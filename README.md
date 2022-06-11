@@ -26,7 +26,7 @@ fine. See comments in install script for further details.
 
 ### Use Dockerfile
 Run provided [Dockerfile](Dockerfile) to compile OpenCV and dlib by hand
-using the official Ubuntu 22.04. image.
+using the official Ubuntu 20.04. image.
     
     cd /path/to/face_amnesia/
     docker build -t face_amnesia .
@@ -79,7 +79,7 @@ source, however, may need some adjustments. The official guides on this
 topic are useful and can be found on the web:
 
 * http://dlib.net/compile.html
-* https://docs.opencv.org/4.5.3/d7/d9f/tutorial_linux_install.html
+* https://docs.opencv.org/4.5.5/d7/d9f/tutorial_linux_install.html
 
 The following paragraphs will provide additional information on
 compilation problems which may occur on some architectures.
