@@ -1,18 +1,17 @@
-# Dockerfile using image of Ubuntu 20.04.
+# Dockerfile using image of Ubuntu 22.04.
 # and compiling OpenCV and dlib by hand.
 #
 # Copyright: C. Hecktor (checktor@posteo.de).
 # Licence: GNU General Public License v3.0.
 
-# Use image of Ubuntu 20.04.
-FROM ubuntu:20.04
+# Use image of Ubuntu 22.04.
+FROM ubuntu:22.04
 
 # Use image of Ubuntu 18.04 with CUDA
 # and cuDNN in order to use GPU support.
 # FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
 ENV DEBIAN_FRONTEND=noninteractive
-ENV TZ=Europe/Berlin
 
 # Install Ubuntu packages.
 RUN apt-get update \
