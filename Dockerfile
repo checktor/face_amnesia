@@ -11,6 +11,9 @@ FROM ubuntu:20.04
 # and cuDNN in order to use GPU support.
 # FROM nvidia/cuda:10.2-cudnn7-devel-ubuntu18.04
 
+ENV DEBIAN_FRONTEND=noninteractive
+ENV TZ=Europe/Berlin
+
 # Install Ubuntu packages.
 RUN apt-get update \
 	&& apt-get -y install \
