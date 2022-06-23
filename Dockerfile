@@ -63,7 +63,7 @@ RUN mkdir /home/lib
 # ===============
 
 # Specify OpenCV version.
-ENV OPENCV_VERSION=4.5.5
+ENV OPENCV_VERSION=4.6.0
 
 # Get OpenCV.
 RUN cd /home/lib \
