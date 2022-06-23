@@ -1,5 +1,5 @@
 # face_amnesia
-Face detection and retrieval in image and video files.
+Detect and retrieve the face of a specific person in image and video files using pre-trained models.
 
 ## Requirements
 
@@ -16,7 +16,7 @@ Face detection and retrieval in image and video files.
 * dlib (http://dlib.net/)
     * face detection and recognition models
 
-## Installation
+## Install
 
 ### Use pre-compiled libraries
 Run provided [install script](install.sh) to use pre-compiled versions
@@ -79,7 +79,7 @@ source, however, may need some adjustments. The official guides on this
 topic are useful and can be found on the web:
 
 * http://dlib.net/compile.html
-* https://docs.opencv.org/4.5.5/d7/d9f/tutorial_linux_install.html
+* https://docs.opencv.org/4.6.0/d7/d9f/tutorial_linux_install.html
 
 The following paragraphs will provide additional information on
 compilation problems which may occur on some architectures.
