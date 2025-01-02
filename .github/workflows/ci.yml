@@ -13,7 +13,7 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
       - name: Build Docker image
-        run: docker build -t checktor/face-amnesia:latest .
+        run: docker build --no-cache -t checktor/face-amnesia:latest .
       - name: Test Docker image
         run: docker run checktor/face-amnesia:latest /bin/bash -c "./home/face_amnesia/test.sh"
       - name: Log in to Docker registry
