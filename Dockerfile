@@ -63,7 +63,7 @@ RUN mkdir /home/lib
 # ===============
 
 # Specify OpenCV version.
-ENV OPENCV_VERSION=4.10.0
+ENV OPENCV_VERSION=4.12.0
 
 # Get OpenCV.
 RUN cd /home/lib \
@@ -104,7 +104,7 @@ RUN cd /home/lib/opencv-${OPENCV_VERSION}/build \
 # =============
 
 # Specify dlib version.
-ENV DLIB_VERSION=19.24
+ENV DLIB_VERSION=20.0
 
 # Get dlib.
 RUN cd /home/lib \
